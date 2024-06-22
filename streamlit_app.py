@@ -3,14 +3,12 @@ import streamlit as st
 from snowflake.snowpark.functions import col
 import requests
 
-
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothies :cup_with_straw:")
 st.write(
     """Choose the fruits you want in your custom Smoothie!
     """
 )
-
 name_on_order = st.text_input("Name on Smoothie")
 st.write("The name on your Smoothie will be",name_on_order)
 
@@ -24,11 +22,9 @@ ingredients_list = st.multiselect(
     my_dataframe,
     max_selections = 5
 )
-
-
 if ingredients_list:  
-
     ingredients_string = ''
+    
     for fruit_choosen in ingredients_list:
         ingredients_string += fruit_choosen +' '
         fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
